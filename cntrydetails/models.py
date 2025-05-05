@@ -53,8 +53,8 @@ class Country(models.Model):
         RIGHT = 'right', 'Right'
 
     # Core identifiers
-    cca2 = models.CharField(max_length=2, primary_key=True)  # ISO 3166-1 alpha-2
-    cca3 = models.CharField(max_length=3, unique=True)       # ISO 3166-1 alpha-3
+    cca2 = models.CharField(max_length=2, primary_key=True)  
+    cca3 = models.CharField(max_length=3, unique=True)       
     ccn3 = models.CharField(max_length=3, null=True, blank=True)
     
     # Names
