@@ -55,7 +55,7 @@ class Country(models.Model):
     # Core identifiers
     cca2 = models.CharField(max_length=2, primary_key=True)  # ISO 3166-1 alpha-2
     cca3 = models.CharField(max_length=3, unique=True)       # ISO 3166-1 alpha-3
-    ccn3 = models.CharField(max_length=3, unique=True)       # ISO 3166-1 numeric
+    ccn3 = models.CharField(max_length=3, null=True, blank=True)
     
     # Names
     common_name = models.CharField(max_length=100)
@@ -71,7 +71,9 @@ class Country(models.Model):
     
     # Geography
     region = models.ForeignKey(Region, on_delete=models.PROTECT)
-    subregion = models.ForeignKey(Subregion, on_delete=models.PROTECT)
+    subregion = models.ForeignKey(Subregion, on_delete=models.PROTECT,null=True,
+        blank=True,
+        related_name='countries')
     continents = models.ManyToManyField(Continent)
     landlocked = models.BooleanField(default=False)
     area = models.FloatField(null=True, blank=True)  # km²
